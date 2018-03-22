@@ -16,28 +16,28 @@
   <!-- <br> -->
   <ion-item>
     <ion-label floating>Jumlah Mahasiswa</ion-label>
-    <ion-input type="number" [value]="jml_mhs" [(ngModel)]="jml_mhs"></ion-input>
+    <ion-input type="number" [value]="jml_mhs" [(ngModel)]="jml_mhs" (change)="jml_mhsChanged()"></ion-input>
   </ion-item>
   <!-- <br> -->
   <ion-item>
     <ion-label floating>Jumlah Kelompok</ion-label>
-    <ion-input type="number" [value]="jml_kelompok" [(ngModel)]="jml_kelompok"></ion-input>
+    <ion-input type="number" [value]="jml_kelompok" [(ngModel)]="jml_kelompok" (change)="jml_kelompokChanged()"></ion-input>
   </ion-item>
   <!-- <br> -->
   <ion-item>
     <ion-label floating>Jumlah Anggota</ion-label>
-    <ion-input type="number" [value]="jml_mhs_perkelompok" [(ngModel)]="jml_mhs_perkelompok"></ion-input>
+    <ion-input type="number" [value]="jml_mhs_perkelompok" [(ngModel)]="jml_mhs_perkelompok" (change)="jml_mhs_perkelompokChanged()"></ion-input>
   </ion-item>
   <!-- <br> -->
   <ion-item>
     <ion-label floating>Jumlah Sisa</ion-label>
-    <ion-input type="number" [value]="jml_sisa_mhs" [(ngModel)]="jml_sisa_mhs"></ion-input>
+    <ion-input type="number" [value]="jml_sisa_mhs" [(ngModel)]="jml_sisa_mhs" disabled="true"></ion-input>
   </ion-item>
 
 </ion-list>
 
 <div padding>
-  <button ion-button class="button_reset" (click)="reset()">Reset</button>
+  <button ion-button class="button_reset" (click)="resetVal()">Reset</button>
   <button ion-button class="button_random" (click)="randomIt()">Random</button>
 </div>
 </ion-content>

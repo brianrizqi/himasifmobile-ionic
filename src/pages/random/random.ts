@@ -16,9 +16,42 @@ export class RandomPage {
 
   }
 
+  jml_mhsChanged(){
+    if(this.jml_kelompok != undefined){
+      this.jml_mhs_perkelompok = Math.floor(this.jml_mhs / this.jml_kelompok);
+      this.jml_sisa_mhs = this.jml_mhs % this.jml_kelompok;
+    }
+    else if(this.jml_mhs_perkelompok != undefined){
+      this.jml_kelompok = Math.ceil(this.jml_mhs / this.jml_mhs_perkelompok);
+      this.jml_sisa_mhs = this.jml_mhs % this.jml_kelompok;
+    }
+  }
+
+  jml_kelompokChanged(){
+    if(this.jml_mhs != undefined){
+      this.jml_mhs_perkelompok = Math.floor(this.jml_mhs / this.jml_kelompok);
+      this.jml_sisa_mhs = this.jml_mhs % this.jml_kelompok;
+    }
+  }
+
+  jml_mhs_perkelompokChanged(){
+    if(this.jml_mhs != undefined){
+      this.jml_kelompok = Math.ceil(this.jml_mhs / this.jml_mhs_perkelompok);
+      this.jml_sisa_mhs = this.jml_mhs % this.jml_kelompok;
+    }
+  }
+
   initVar(){
     this.jml_mhs_perkelompok = Math.floor(this.jml_mhs / this.jml_kelompok);
     this.jml_sisa_mhs = this.jml_mhs % this.jml_kelompok;
+  }
+
+  resetVal(){
+    this.jml_mhs = "";
+    this.jml_mhs_perkelompok = "";
+    this.jml_kelompok = "";
+    this.jml_sisa_mhs = "";
+    this.matkul = "";
   }
 
   randomIt(){

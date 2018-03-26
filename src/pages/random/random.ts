@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { RandomResultPage } from '../random-result/random-result';
+import { RandomResultPage } from './random-result/random-result';
 
 @Component({
   selector: 'page-random',
   templateUrl: 'random.html'
 })
 export class RandomPage {
+  rootPage: any;
   public matkul: any;
   public jml_mhs: any;
   public jml_kelompok: any;
@@ -14,7 +15,7 @@ export class RandomPage {
   public jml_sisa_mhs: any;
 
   constructor(public navCtrl: NavController) {
-
+    this.rootPage = 'RandomPage';
   }
 
   jml_mhsChanged(){
@@ -42,11 +43,6 @@ export class RandomPage {
     }
   }
 
-  initVar(){
-    this.jml_mhs_perkelompok = Math.floor(this.jml_mhs / this.jml_kelompok);
-    this.jml_sisa_mhs = this.jml_mhs % this.jml_kelompok;
-  }
-
   resetVal(){
     this.jml_mhs = "";
     this.jml_mhs_perkelompok = "";
@@ -56,24 +52,22 @@ export class RandomPage {
   }
 
   randomIt(){
-    this.initVar();
-    var res = "";
-    var xx = new Array();
+
+    var i,j,x;
     var a = new Array();
-    for(var i=1; i<=this.jml_mhs; i++){
+    for(i=1; i<=this.jml_mhs; i++){
       a.push(i);
     }
     var num = 1;
-
+    var res = "";
     if(this.jml_sisa_mhs > 0){
       //1st
-      for(var i = num; i <= this.jml_sisa_mhs; i++){
-        res = res + "Kelompok - " + i + "\n";
+      for(i = num; i <= this.jml_sisa_mhs; i++){
+        res = res + "Kelompok - " + i + "</br>";
 
-        for(var j = 0; j < this.jml_mhs_perkelompok + 1; j++){
-          var x = Math.floor((Math.random()*a.length));
-          res = res + a[x] + "\n";
-          // xx.push(a[x]);
+        for(j = 0; j < this.jml_mhs_perkelompok + 1; j++){
+          x = Math.floor((Math.random()*a.length));
+          res = res + a[x] + "</br>";
           a.splice(x,1);
         }
         num += 1;
@@ -81,22 +75,23 @@ export class RandomPage {
       }
 
       //2nd
-      for(var i = num; i <= this.jml_kelompok; i++){
-        res = res + "Kelompok - " + i + "\n";
+      for(i = num; i <= this.jml_kelompok; i++){
+        res = res + "Kelompok - " + i + "</br>";
 
-        for(var j = 0; j < this.jml_mhs_perkelompok; j++){
-          var x = Math.floor((Math.random()*a.length));
-          res = res + a[x] + "\n";
-          // xx.push(a[x]);
+        for(j = 0; j < this.jml_mhs_perkelompok; j++){
+          x = Math.floor((Math.random()*a.length));
+          res = res + a[x] + "</br>";
           a.splice(x,1);
         }
       }
-      res = res + "\n";
+      res = res + "</br>";
     }
     res = res + "<b>Copyright \u00a9 HIMASIF UNEJ</b>";
+    var resOri = res.split("</br>").join("\n");
 
-    this.navCtrl.push(RandomResultPage, {
-      result: res
+    this.navCtrl.push('RandomResultPage',{
+      resOri: resOri,
+      res: res
     });
   }
 

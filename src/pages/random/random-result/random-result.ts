@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, IonicPage } from 'ionic-angular';
 
 /**
  * Generated class for the RandomResultPage page.
@@ -17,8 +17,7 @@ export class RandomResultPage {
   result: string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.result = navParams.get('res');
-    alert(this.result);
+    this.result = navParams.get('resOri');
   }
 
   ionViewDidLoad() {

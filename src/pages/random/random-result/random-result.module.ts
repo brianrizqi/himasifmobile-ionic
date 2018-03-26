@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { RandomResultPage } from './random-result';
 
+
 @NgModule({
   declarations: [
     RandomResultPage,
@@ -9,5 +10,9 @@ import { RandomResultPage } from './random-result';
   imports: [
     IonicPageModule.forChild(RandomResultPage),
   ],
+  exports: [
+    RandomResultPage
+  ]
 })
+
 export class RandomResultPageModule {}

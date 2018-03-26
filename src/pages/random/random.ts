@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { RandomResultPage } from '../random-result/random-result';
 
 @Component({
   selector: 'page-random',
@@ -94,7 +95,9 @@ export class RandomPage {
     }
     res = res + "<b>Copyright \u00a9 HIMASIF UNEJ</b>";
 
-    alert(res);
+    this.navCtrl.push(RandomResultPage, {
+      result: res
+    });
   }
 
 
